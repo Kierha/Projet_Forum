@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Forum</title>
+    <link rel="stylesheet" href='/css/modifyPost.css'>
+    <link rel='icon' href="" type='image/ico'>
+</head>
+
+<html>
+
+<body>
+    <div class="container">
+        <div class="txt">
+            EDIT YOUR POST
+        </div>
+        <hr>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="content">
+            <form action="/insertEditionPost/?idPost={{.ID}}" method="POST">
+                <label class="titre" for="titleID">Title: </label><br>
+                <input class="blank-title" type="text" id="titleID" name="title" value="{{.Title}}"><br>
+                <label class="desc" for="descriptionID">Description: </label><br>
+                <input class="desc-blank" type="text" id="descriptionID" name="description"
+                    value="{{.Description}}"><br>
+                <label class="contenu" for="contentID">Content: </label><br>
+                <textarea class="contt" id="contentID" name="content" value="{{.Content}}">{{.Content}}</textarea>
+                <br>
+                <br>
+                <input class="btn-up" type="submit" value="Update Post">
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

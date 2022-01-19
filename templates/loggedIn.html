@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet Forum</title>
+    <link rel="stylesheet" href='/css/forum.css'>
+    <link rel='icon' href="" type='image/ico'>
+</head>
+
+
+<body>
+
+    <div id="main">
+        <div id="text">
+            Most Liked Post 🔥
+        </div>
+        <div id="most-post">
+            <img src="/img/rs3.png" alt="img-post">
+        </div>
+        <br>
+        <br>
+        <span class="catego">Catégories</span>
+        <div class="container">
+            <button class="button" onclick="document.getElementById('pop--up').style.display = 'Flex'">Create Your
+                Post</button>
+        </div>
+        <a href="#0" class="btn10">
+            <span>Actu</span>
+            <div class="transition"></div>
+        </a>
+        <a href="#0" class="btn11">
+            <span>Auto</span>
+            <div class="transition"></div>
+        </a>
+        <a href="#0" class="btn11">
+            <span>Jeux vidéo</span>
+            <div class="transition"></div>
+        </a>
+        <a href="#0" class="btn11">
+            <span>Manga</span>
+            <div class="transition"></div>
+        </a>
+        <div style="height:75px; display:block;"> </div>
+        <a href="#0" class="btn10">
+            <span>Info</span>
+            <div class="transition"></div>
+        </a>
+        <a href="#0" class="btn11">
+            <span>Environnement</span>
+            <div class="transition"></div>
+        </a>
+        <a href="#0" class="btn11">
+            <span>Sport</span>
+            <div class="transition"></div>
+        </a><a href="#0" class="btn11">
+            <span>Animaux</span>
+            <div class="transition"></div>
+        </a>
+    </div>
+    <div id="box3">
+        <div id="container">
+            <div id="logo">
+                <img src="/img/rs3.png">
+            </div>
+            <div id="menu">
+                <ul>
+                    <a href="/">
+                        HOME
+                    </a>
+                    <a href="/forum">
+                        FORM
+                    </a>
+                    <button class="popup-button" onclick="document.getElementById('popup').style.display = 'Flex'">
+                        LOGIN
+                    </button>
+                    <button class="popup-button" onclick="document.getElementById('popup-sign').style.display = 'Flex'">
+                        SIGN UP
+                    </button>
+                </ul>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div id="popup" class="bg-popup">
+        <div class="popup-content">
+            <div class="close-popup" onclick="document.getElementById('popup').style.display = 'None'">
+                +
+            </div>
+
+            <div class="login">
+                <form action="/forum" method="POST">
+                    <input type="text" placeholder="Username" id="username" name="connection-username">
+                    <input type="password" placeholder="password" id="password" name="connection-password">
+                    <a href="#" class="forgot">forgot password?</a>
+                    <input type="submit" value="Sign In">
+                </form>
+                <br>
+                <div class="container-signin">
+                    <p>Join The Force Now ! <button class=btn-sign-up
+                            onclick="document.getElementById('popup-sign').style.display = 'Flex';document.getElementById('popup').style.display = 'None'">Sign
+                            Up. </button></p>
+                </div>
+            </div>
+            <div class="shadow"></div>
+        </div>
+    </div>
+    <div id="popup-sign" class="bg-popup-sign">
+        <div class="popup-content-sign">
+            <div class="close-popup" onclick="document.getElementById('popup-sign').style.display = 'None'">
+                +
+            </div>
+            <hr>
+            <h1 class="title-register">
+                Register
+            </h1>
+            <form action="/insertUserInfos" method="POST">
+                <div class="input-container">
+                    <i class="fa fa-user icon"></i>
+                    <input class="input-field" type="text" placeholder="Username" name="register-username">
+                </div>
+                <div class="input-container">
+                    <i class="fa fa-key icon"></i>
+                    <input class="input-field" type="password" placeholder="Password" name="register-password">
+                </div>
+                <hr>
+                <input type="submit" class="registerbtn" value="Register">
+            </form>
+            <br>
+            <br>
+            <br>
+            {{if .}}
+            {{.}}
+            {{end}}
+            <div class="container-signin">
+                <p>Already have an account? <button class=btn-sign-up
+                        onclick="document.getElementById('popup').style.display = 'Flex';document.getElementById('popup-sign').style.display = 'None'">Sign
+                        in. </button></p>
+            </div>
+
+        </div>
+    </div>
+    <div id="pop--up" class="bg-pop">
+        <div class="container-pop">
+            <div class="close-up" onclick="document.getElementById('pop--up').style.display = 'None'">
+                +
+            </div>
+            <div class="post-t">❓ What's Up ❓</div>
+            <div class="addFormArea">
+                <form action="/addPost" method="POST">
+                    <input type="text" class="formItem title" placeholder="Title" name="title" />
+                    <input type="text" class="formItem description" placeholder="Description" name="description" />
+                    <input id="image" type="hidden" name="image" value="">
+                    <textarea placeholder="Content" class="formItem content" cols="60" rows="15"
+                        name="content"></textarea>
+                    <div>
+                        <label class="custom-file-upload">
+                            <input type='file' accept='image/*' onchange='openFile(this)'>
+                            <span class="dot">+</span>
+                        </label>
+                        <input type="submit" class="formItem-submitButton" value="Add Post">
+                    </div>
+                </form>
+
+            </div>
+
+
+</body>
+
+</html>
+<script>
+
+    function openFile(element) {
+        var input = document.getElementById("image")
+        var file = element.files[0]
+        var reader = new FileReader()
+        reader.onloadend = function () {
+            console.log('RESULT1', reader.result.substring(4))
+            input.value = reader.result.substring(4)
+        }
+        reader.readAsDataURL(file);
+    };
+</script>

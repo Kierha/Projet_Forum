@@ -1,0 +1,30 @@
+Commande Git
+
+
+Commande pour ce placé sur une branche et en créé une
+
+'git checkout master'
+'git pull'
+'git checkout -b feature/le_nom_ta_branche'
+
+Suprimer une branche --> git branch -D Nom_de_la_branche_a_supp
+----------------------------------------------------------------------------------
+
+
+
+REBASE BRANCH
+
+git reset --hard
+--------------------------------------------------------
+Rebaser avec git en ligne de commande
+En ligne de commande, le rebase s’effectue en 3 commandes :
+-
+-
+-
+-
+git checkout "ce placer sur sa branch"
+git rebase --rebase-merges develop
+-
+-
+//Nom de la feature a pull de develop
+git push --force origin feature/View_account

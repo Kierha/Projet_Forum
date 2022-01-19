@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projet Forum</title>
+  <link rel="stylesheet" href='/css/index.css'>
+  <link rel="stylesheet" href='/css/form.css'>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel='icon' href="" type='image/ico'>
+</head>
+
+
+
+<body>
+  <header>
+    <div>
+      <div id="box3">
+        <div id="container">
+          <div id="logo">
+            <img src="/img/rs3.png">
+          </div>
+          <div id="menu">
+            <ul>
+              <a href="index.html">
+                Home
+              </a>
+              <a href="/">
+                News
+              </a>
+              <a href="login.html">
+                Login/Register
+              </a>
+            </ul>
+          </div>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap-contact100">
+    <form class="contact100-form" method="GET" action="/templates/index.html">
+      <a href="addForm.html" class="createPostButton">
+        Create New Post
+      </a>
+    </form>
+    <div class="postsArea">
+      {{range .}}
+      <div class="post">
+        <div class="postLeft">
+          <h1 class="postTitle">{{.Title}}</h1>
+          <span class="postDescription">{{.Description}}</span>
+          <img src="data:{{.Image}}">
+    
+          <hr>
+          <p class="postContent">{{.Content}}</p>
+        </div>
+      </div>
+      <div class="seperator"></div>
+      <div class="postRight">
+        
+        <div class="icons">
+          <div class="iconBackground">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <defs>
+                <style>
+                  .a {
+                    fill: none;
+                    stroke: #FFFFFF;
+                  }
+                </style>
+              </defs>
+              <path class="a"
+                d="M20,15.659h0a1.5,1.5,0,1,1,0,3H19a1.5,1.5,0,0,1,1.5,1.5c0,.829-.672,1-1.5,1H12.5c-2.851,0-3.5-.5-7-1v-8.5c2.45,0,6.5-4.5,6.5-8.5,0-1.581,2.189-2.17,3,.719.5,1.781-1,5.281-1,5.281h8a1.5,1.5,0,0,1,1.5,1.5c0,.829-.672,2-1.5,2H21a1.5,1.5,0,0,1,0,3H20" />
+              <rect class="a" x="0.5" y="10.159" width="5" height="12" />
+            </svg>
+          </div>
+          <div class="iconBackground">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <defs>
+                <style>
+                  .a {
+                    fill: none;
+                    stroke: #FFFFFF;
+                  }
+                </style>
+              </defs>
+              <path class="a"
+                d="M13,11H7a1,1,0,0,0,0,2h6a1,1,0,0,0,0-2Zm4-4H7A1,1,0,0,0,7,9H17a1,1,0,0,0,0-2Zm2-5H5A3,3,0,0,0,2,5V15a3,3,0,0,0,3,3H16.59l3.7,3.71A1,1,0,0,0,21,22a.84.84,0,0,0,.38-.08A1,1,0,0,0,22,21V5A3,3,0,0,0,19,2Zm1,16.59-2.29-2.3A1,1,0,0,0,17,16H5a1,1,0,0,1-1-1V5A1,1,0,0,1,5,4H19a1,1,0,0,1,1,1Z" />
+            </svg>
+          </div>
+        </div>
+
+          
+
+        <a href="/edit/?idPost={{.ID}}">Edit</a>
+        <form method="post" action="/delete"> 
+          <input type="hidden" name="idPost" value="{{.ID}}">
+          <input type="submit" value="delete">
+        </form>
+      </div>
+      {{end}}
+    </div>
+</body>
+
+</html>
